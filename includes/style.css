@@ -1,3 +1,11 @@
-html{
+html, div, body{
     text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+.display {
+    display: initial;
 }

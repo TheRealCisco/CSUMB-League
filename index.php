@@ -1,77 +1,154 @@
 <?php
+    session_start();
+    ob_start();
+    include 'includes/header.php';
     include 'includes/dbConn.php';
     include 'includes/functions.php';
-    if(isset($_POST['signupForm'])) {
-        createUser();
-    }
+    include 'login.php';
     
-    if(isset($_POST['loginForm'])){
-        loginUser();
-    }
+    
 ?>
-
-<html>
-    <head>
-        <title>League of Legends</title>
-        <link rel="stylesheet" href="includes/style.css" type="text/css" />
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-    </head>
-    <!-- JQUERY -->
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
     <script>
-        function confirmForm() {
-            if($("#firstName").val() == "") {
-               $("#error").html("Not all fields are set!");
-               return false; 
-            }
-            else if($("#lastName").val() == "") {
-                $("#error").html("Not all fields are set!");
-                return false;
-            }
-            if($("#userName").val() == "") {
-                $("#error").html("Not all fields are set!");
-                return false;
-            }
-            if($("#summonerName").val() == "") {
-                $("#error").html("Not all fields are set!");
-                return false;
-            }
-            if($("#email").val() == "") {
-                $("#error").html("Not all fields are set!");
-                return false;
-            }
-            if($("#password").val() == "") {
-                $("#error").html("Not all fields are set!");
-                return false;
-            }
-            
-            return true;
-        }
+        $("#homeLink").addClass("active");
     </script>
-    <body>
-        <h1>CSUMB League of Legends Club</h1> <br>
-        
-        <form method="POST">
-            <input type="text" name="username" placeholder="Username"><br>
-            <input type="password" name="password" placeholder="Password"><br>
-            <button type="submit" name="loginForm" onclick='loginUser()'>LOGIN</button>
-        </form> 
+    
+    <!-- Page Content -->
+    <div class="container">
+        <header class="hero-spacer">
+            <h1>CSUMB League of Legends Club</h1>
+            <p>Welcome to the official website for the CSUMB League Club!</p>
+        </header>
 
-        <br><br><br>
-        
-        <form onsubmit="return confirmForm()" method="POST">
-            <input type="text" name="first" id="firstName" placeholder="First Name"><br>
-            <input type="text" name="last" id="lastName" placeholder="Last Name"><br>
-            <input type="text" name="username" id="username" placeholder="Username"><br>
-            <input type="text" name="summonername" id="summonerName" placeholder="Summoner Name"><br>
-            <input type="text" name="email" id="email" placeholder="Email"><br>
-            <input type="password" name="password" id="password" placeholder="Password"><br>
-            <button type="submit" name="signupForm" >SIGN UP</button>
-        </form>
-        <strong id="error"></strong>
-        
+        <hr>
+        <div class="row">
+           
+                <div class="row carousel-holder">
+                    <div class="col-md-12">
+                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img class="slide-image" src="http://placehold.it/1000x500" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://placehold.it/1000x500" alt="">
+                                </div>
+                                <div class="item">
+                                    <img class="slide-image" src="http://placehold.it/1000x500" alt="">
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                            </a>
+                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                            </a>
+                        </div>
+                   
 
-    </body>
+                </div>
+               
+                <div class="row">
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+			            <a href=" ">
+                            <img src="http://placehold.it/400x200" alt="">
+		            	</a>
+                            <div class="caption">
+                          
+                                <h4>
+                                    Quick Link Name
+                                </h4>
+                                <p>Info of the quick link </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+			            <a href=" ">
+                            <img src="http://placehold.it/400x200" alt="">
+		            	</a>
+                            <div class="caption">
+                          
+                                <h4>
+                                    What it is
+                                </h4>
+                                <p>Information here </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+		            	<a href=" ">
+                            <img src="http://placehold.it/400x200" alt="">
+			            </a>
+                            <div class="caption">
+                               
+                                <h4>
+                                    What it is
+                                </h4>
+                                <p>Information here </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+		            	<a href=" ">
+                            <img src="http://placehold.it/400x200" alt="">
+		            	</a>
+                            <div class="caption">
+                               
+                                <h4>
+                                    What it is
+                                </h4>
+                                <p>Information here </p>
+                            </div>
+                        </div>
+                    </div>
+                      <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+		            	<a href=" ">
+                            <img src="http://placehold.it/400x200" alt="">
+		            	</a>
+                            <div class="caption">
+                                
+                                <h4>
+                                    What it is
+                                </h4>
+                                <p>Information here </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-lg-4 col-md-4">
+                        <div class="thumbnail">
+		            	<a href=" ">
+                            <img src="http://placehold.it/400x200" alt="">
+		            	</a>
+                            <div class="caption">
+                                
+                                <h4>
+                                    What it is
+                                </h4>
+                                <p>Information here </p>
+                            </div>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+        </div>
+        
+    </div>
+   
+</body>
+
+</html>
+    
+    
+    
 </html>

@@ -18,23 +18,3 @@
         
         return $dbConn;
     }
-    
-   /* function getDatabaseConnection(){
-        $servername = getenv('IP');
-        $dbPort = 3306;
-        $database = "login";
-        $username = getenv('C9_USER');
-        $password = "";
-        $dbConn = new PDO("mysql:host=$servername;port=$dbPort;dbname=$database", $username, $password);
-        $dbConn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION); 
-        return $dbConn;
-    }
-    
-    function getDataBySQL($sql){
-        $connect = getDatabaseConnection();
-        $stmt = $connect->prepare($sql);
-        $stmt->execute();
-        return $stmt;
-    } */ 
-    
-    ?>

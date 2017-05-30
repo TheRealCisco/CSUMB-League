@@ -1,18 +1,33 @@
 <?php
     function createUser() {
         if (isset($_POST['signupForm'])) {
-  
             $dbConn = getConnection("login");
-            $sql = "INSERT INTO user (first, last, username, summonername, email, password) 
-                    VALUES (:first, :last, :username, :summonername, :email, :password)";
+            
+            $sql = "SELECT username FROM user WHERE username = :username";
+    
+            $statement = $dbConn->prepare($sql);
+            $np = array();
+            $np[":username"] = $_GET['username'];
+            $statement->execute( $np );
+            $record = $statement->fetch(PDO::FETCH_ASSOC);
+            
+            if($record.username != ""){
+                echo "<script> 
+                        $('#available').html(' Unavailable');
+                        $('#available').css('color', 'red');
+                      </script>";
+                return false;
+            }
+            
+            $sql = "INSERT INTO user (first, last, username, email, password) 
+                    VALUES (:first, :last, :username, :email, :password)";
 
             $namedParameters = array();
-            $namedParameters[':first'] =  $_POST['first'];
-            $namedParameters[':last'] = $_POST['last'];
+            $namedParameters[':first'] =  $_POST['firstName'];
+            $namedParameters[':last'] = $_POST['lastName'];
             $namedParameters[':username'] = $_POST['username'];
-            $namedParameters[':summonername'] = $_POST['summonername'];
             $namedParameters[':email'] = $_POST['email'];
-            $namedParameters[':password'] = $_POST['password'];
+            $namedParameters[':password'] = sha1($_POST['password']);
         
             $statement = $dbConn->prepare($sql);
             $statement->execute($namedParameters);    
@@ -47,10 +62,10 @@
             
             // If the record is empty it will go back to the index page and update that they did not make a mistake
             else {
-                $_SESSION['username'] = $result['username']; 
-                header("Location: includes/apiConnect.php"); 
+                $_SESSION['username'] = $result['username'];
                 echo "Welcome";
             }
         }//END isset   
     }//END Function
+    
 ?>
